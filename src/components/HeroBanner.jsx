@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { ArrowRight, RotateCcw, Compass } from 'lucide-react';
+import { ArrowRight, Compass } from 'lucide-react';
 
 const INTRO_IMAGES = [
   {
@@ -37,7 +37,6 @@ export default function HeroBanner({ onExplore, onIntroStatusChange }) {
   const heroRef = useRef(null);
   const sublineRef = useRef(null);
   const ctaRef = useRef(null);
-  const replayBtnRef = useRef(null);
   const animTimelineRef = useRef(null);
 
   const splitWords = (element) => {
@@ -276,23 +275,6 @@ export default function HeroBanner({ onExplore, onIntroStatusChange }) {
 
         </div>
       </div>
-
-      {/* Subtle Bottom-Right Replay Control (Only shown after loading finishes) */}
-      {isIntroFinished && (
-        <div className="absolute bottom-12 right-6 sm:bottom-16 sm:right-12 lg:right-16 z-30 pointer-events-auto">
-          <button
-            onClick={runAnimation}
-            className="p-3 rounded-full bg-black/40 hover:bg-black/70 text-white/80 hover:text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer flex items-center gap-2 group shadow-xl"
-            title="Replay cinematic intro animation"
-            aria-label="Replay intro animation"
-          >
-            <RotateCcw className="w-4 h-4 group-hover:-rotate-90 transition-transform duration-500 text-[#b89650]" />
-            <span className="font-cormorant text-xs tracking-[0.2em] uppercase text-white/90 hidden sm:inline pr-1">
-              Replay Intro
-            </span>
-          </button>
-        </div>
-      )}
     </section>
   );
 }
